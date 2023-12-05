@@ -38,7 +38,7 @@ public class HW1_FindCostOfPermutations {
      * @throws IllegalNumberException is thrown if the array size is 0
      * @throws IllegalCostException is thrown if the cost to look for is less than 0
      */
-    private static ArrayList<CostSum> costOfSums(int[] inputNumbers, int costRequested) throws NullNumberException, IllegalNumberException, IllegalCostException {
+    public static ArrayList<int[]> costOfSums(int[] inputNumbers, int costRequested) throws NullNumberException, IllegalNumberException, IllegalCostException {
 
         if (inputNumbers != null) {
             if (inputNumbers.length != 0 && inputNumbers.length <= 10) {
@@ -59,10 +59,10 @@ public class HW1_FindCostOfPermutations {
                         sumsOfPermutations.add(new CostSum(numberPermutation.clone(), cost));
                     }
 
-                    ArrayList<CostSum> correctPermutations = new ArrayList<>();
+                    ArrayList<int[]> correctPermutations = new ArrayList<>();
                     for (CostSum sumsOfPermutation : sumsOfPermutations) {
                         if ((sumsOfPermutation.costOfArray) == costRequested) {
-                            correctPermutations.add(sumsOfPermutation);
+                            correctPermutations.add(sumsOfPermutation.sequenceOfNumbers);
                         }
                     }
 
@@ -128,13 +128,13 @@ public class HW1_FindCostOfPermutations {
 
         int[] inputNumbers = new int[]{2, 1, 3};
         int costRequested = 9;
-        List<CostSum> result = costOfSums(inputNumbers, costRequested);
+        List<int[]> result = costOfSums(inputNumbers, costRequested);
 
-        System.out.println("Cost: " + result.get(0).costOfArray);
-        for (CostSum costSum : result) {
+        System.out.println("Cost: " + costRequested);
+        for (int[] permutation : result) {
             System.out.print("Array: [");
-            for (int j = 0; j < costSum.sequenceOfNumbers.length; j++) {
-                System.out.print(costSum.sequenceOfNumbers[j] + " ");
+            for (int i : permutation) {
+                System.out.print(i + " ");
             }
             System.out.println("]");
         }
