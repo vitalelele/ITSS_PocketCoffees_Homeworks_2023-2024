@@ -11,7 +11,7 @@ import main.java.customException.*;
  The program calculates all possible permutations, furthermore the user provides as input an integer representing a cost.
  The program returns all the permutations whose cost is equal to what the user provided as input.
  */
-public class FindCostOfPermutations {
+public class HW1_FindCostOfPermutations {
     /**
      * This inner class associates a permutation with its cost.
      */
