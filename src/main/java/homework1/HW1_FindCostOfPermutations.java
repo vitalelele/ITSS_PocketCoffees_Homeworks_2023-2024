@@ -38,11 +38,10 @@ public class HW1_FindCostOfPermutations {
      * @throws IllegalNumberException is thrown if the array size is 0
      * @throws IllegalCostException is thrown if the cost to look for is less than 0
      */
-    public static ArrayList<int[]> costOfSums(int[] inputNumbers, int costRequested) throws NullNumberException, IllegalNumberException, IllegalCostException {
+    public static ArrayList<int[]> costOfSums(int[] inputNumbers, int costRequested) throws NullNumberException, IllegalNumberException{
 
         if (inputNumbers != null) {
             if (inputNumbers.length != 0 && inputNumbers.length <= 10) {
-                if (costRequested > 0) {
                     int size = inputNumbers.length;
                     List<int[]> numberPermutations = generatePermutations(inputNumbers);
                     ArrayList<CostSum> sumsOfPermutations = new ArrayList<>();
@@ -67,9 +66,6 @@ public class HW1_FindCostOfPermutations {
                     }
 
                     return correctPermutations;
-                } else {
-                    throw new IllegalCostException("The cost to look for in the permutations must be greater than 0");
-                }
             } else {
                 throw new IllegalNumberException("The size of the array must be greater than 0 and minor than 10.");
             }
@@ -126,8 +122,8 @@ public class HW1_FindCostOfPermutations {
     /*  main for testing */
     public static void main(String[] args) throws NullNumberException, IllegalNumberException, IllegalCostException {
 
-        int[] inputNumbers = new int[]{2, 1, 3};
-        int costRequested = 9;
+        int[] inputNumbers = new int[]{3,4,1};
+        int costRequested = 13;
         List<int[]> result = costOfSums(inputNumbers, costRequested);
 
         System.out.println("Cost: " + costRequested);
