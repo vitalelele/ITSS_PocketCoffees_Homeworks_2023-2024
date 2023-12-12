@@ -24,6 +24,7 @@ public class HW1_FindCostOfPermutations {
             this.costOfArray = costOfArray;
         }
     }
+
     /**
      * This method generates all possible permutations of the array
      * and calculates the cost of all permutations, where the cost of
@@ -35,6 +36,7 @@ public class HW1_FindCostOfPermutations {
      * whose cost is equal to the requested one, the ArrayList is empty
      * @throws NullNumberException is thrown if the numbers array is null
      * @throws IllegalNumberException is thrown if the array size is 0
+     * @throws IllegalCostException is thrown if the cost to look for is less than 0
      */
     public static ArrayList<int[]> costOfSums(int[] inputNumbers, int costRequested) throws NullNumberException, IllegalNumberException{
 
@@ -115,5 +117,22 @@ public class HW1_FindCostOfPermutations {
         int temp = array[firstToSwap];
         array[firstToSwap] = array[secondToSwap];
         array[secondToSwap] = temp;
+    }
+
+    /*  main for testing */
+    public static void main(String[] args) throws NullNumberException, IllegalNumberException, IllegalCostException {
+
+        int[] inputNumbers = new int[]{3,4,1};
+        int costRequested = 13;
+        List<int[]> result = costOfSums(inputNumbers, costRequested);
+
+        System.out.println("Cost: " + costRequested);
+        for (int[] permutation : result) {
+            System.out.print("Array: [");
+            for (int i : permutation) {
+                System.out.print(i + " ");
+            }
+            System.out.println("]");
+        }
     }
 }
