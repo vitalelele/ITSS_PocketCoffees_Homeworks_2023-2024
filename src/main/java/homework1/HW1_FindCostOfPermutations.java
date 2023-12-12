@@ -119,20 +119,4 @@ public class HW1_FindCostOfPermutations {
         array[secondToSwap] = temp;
     }
 
-    /*  main for testing */
-    public static void main(String[] args) throws NullNumberException, IllegalNumberException, IllegalCostException {
-
-        int[] inputNumbers = new int[]{3,4,1};
-        int costRequested = 13;
-        List<int[]> result = costOfSums(inputNumbers, costRequested);
-
-        System.out.println("Cost: " + costRequested);
-        for (int[] permutation : result) {
-            System.out.print("Array: [");
-            for (int i : permutation) {
-                System.out.print(i + " ");
-            }
-            System.out.println("]");
-        }
-    }
 }
