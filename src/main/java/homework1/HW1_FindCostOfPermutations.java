@@ -23,6 +23,11 @@ public class HW1_FindCostOfPermutations {
             this.sequenceOfNumbers = sequenceOfNumbers;
             this.costOfArray = costOfArray;
         }
+
+        @Override
+        public boolean equals(Object obj) {
+            return Arrays.equals(this.sequenceOfNumbers,((CostSum) obj).sequenceOfNumbers);
+        }
     }
 
     /**
@@ -45,16 +50,17 @@ public class HW1_FindCostOfPermutations {
                     List<int[]> numberPermutations = generatePermutations(inputNumbers);
                     ArrayList<CostSum> sumsOfPermutations = new ArrayList<>();
 
-                    int sum;
-                    int cost;
                     for (int[] numberPermutation : numberPermutations) {
-                        sum = numberPermutation[0] + numberPermutation[1];
-                        cost = sum;
-                        for (int j = 2; j < size; j++) {
+                        int sum = numberPermutation[0];
+                        int cost = numberPermutation.length == 1 ? sum : 0;
+                        for (int j = 1; j < size; j++) {
                             sum += numberPermutation[j];
                             cost += sum;
                         }
-                        sumsOfPermutations.add(new CostSum(numberPermutation.clone(), cost));
+                        CostSum newElement = new CostSum(numberPermutation.clone(), cost);
+                        if(!sumsOfPermutations.contains(newElement)){
+                            sumsOfPermutations.add(newElement);
+                        }
                     }
 
                     ArrayList<int[]> correctPermutations = new ArrayList<>();
@@ -117,5 +123,4 @@ public class HW1_FindCostOfPermutations {
         array[firstToSwap] = array[secondToSwap];
         array[secondToSwap] = temp;
     }
-
 }

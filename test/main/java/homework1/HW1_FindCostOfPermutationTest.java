@@ -39,7 +39,8 @@ public class HW1_FindCostOfPermutationTest {
     @MethodSource("streamEccezioni")
     @Order(1)
     void testEccezioni(String nome, int[] inputNumbers, int costRequested, Class<? extends Exception> exception) {
-        assertThrows(exception, () -> HW1_FindCostOfPermutations.costOfSums(inputNumbers, costRequested).toArray());
+        HW1_FindCostOfPermutations hw1_findCostOfPermutations = new HW1_FindCostOfPermutations();
+        assertThrows(exception, () -> hw1_findCostOfPermutations.costOfSums(inputNumbers, costRequested).toArray());
     }
 
     static Stream<Arguments> streamEccezioni() {
